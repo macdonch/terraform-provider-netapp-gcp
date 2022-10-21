@@ -49,7 +49,7 @@ func (r *Request) BuildHTTPReq(c *Client, baseURL string) (*http.Request, error)
 	// 3. Absolute file path to an JSON key file - service_account
 	token := c.Token
 	expirationTime := c.TokenExpirationTime
-	re := regexp.MustCompile(`^[[a-z]([-a-z0-9]*[a-z0-9])@[a-z0-9-]+\.iam\.gserviceaccount\.com$`)
+	re := regexp.MustCompile(`^([0-9]+@cloudbuild|[[a-z]([-a-z0-9]*[a-z0-9])@[a-z0-9-]+\.iam)\.gserviceaccount\.com$`)
 	if c.Credentials != "" {
 		keyBytes = []byte(c.Credentials)
 	} else if c.ServiceAccount != "" {

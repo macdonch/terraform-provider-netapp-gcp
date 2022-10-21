@@ -71,7 +71,7 @@ func getProjectNumber(p string, d *schema.ResourceData) (string, error) {
 	var ts *google.Credentials
 	var b []byte
 
-	re := regexp.MustCompile(`^[[a-z]([-a-z0-9]*[a-z0-9])@[a-z0-9-]+\.iam\.gserviceaccount\.com$`)
+	re := regexp.MustCompile(`^([0-9]+@cloudbuild|[[a-z]([-a-z0-9]*[a-z0-9])@[a-z0-9-]+\.iam)\.gserviceaccount\.com$`)
 
 	if v, ok := d.GetOk("service_account"); ok {
 		serviceAccount := v.(string)
