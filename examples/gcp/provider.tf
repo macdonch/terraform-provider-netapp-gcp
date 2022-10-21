@@ -4,7 +4,7 @@ provider "netapp-gcp" {
   # alternatively, set GCP_PROJECT environment variable
   # project         = "123456890"
 
-  # We support two ways to authenticate. Choose one or the other
+  # We support three ways to authenticate.
 
   # Auth option 1: using service account key file
   # path to JSON key file for IAM service account with "roles/netappcloudvolumes.admin" privileges
@@ -19,10 +19,11 @@ provider "netapp-gcp" {
   # credentials = "${base64decode(data.vault_generic_secret.gcp_key.data["private_key"])}"
 
   # Auth option 3: using service account impersonation
-  # Cloud Function running as attached service account.
+  # Cloud Function running as attached service account, or Cloud Build.
   # To make service account impersonation work, the ADC user (e.g. the gcloud user) needs roles/iam.serviceAccountTokenCreator permission for that service account.
 
-  # service_account = "<service account name>@<project_id>.iam.gserviceaccount.com"
+  # service_account = "<service account name>@<project_id>.iam.gserviceaccount.com" or "<project number>@cloudbuild.gserviceaccount.com"
+  
 }
 
 terraform {
